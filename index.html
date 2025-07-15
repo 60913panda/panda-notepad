@@ -1,47 +1,51 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-<meta charset="UTF-8" />
-<title>胖達記事本</title>
-<style>
-  textarea {
-    width: 1000000px;
-    height: 1000000px;
-    box-sizing: border-box;
-    font-size: 18px;
-    padding: 10px;
-    resize: none;
-    overflow: auto;
-    font-family: monospace, monospace;
-    display: block;
-    margin: 20px auto;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <title>靜音防護記事本</title>
+
+  <!-- 圖示（favicon） -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+  <style>
+    textarea {
+      width: 600px;
+      height: 600px;
+      box-sizing: border-box;
+      font-size: 18px;
+      padding: 10px;
+      resize: none;
+      overflow: auto;
+      font-family: monospace, monospace;
+      display: block;
+      margin: 20px auto;
+    }
+  </style>
 </head>
 <body>
 
-<textarea id="noPasteInput" placeholder="請輸入文字"></textarea>
+  <textarea id="noPasteInput" placeholder="只能打字，不能貼上"></textarea>
 
-<script>
-  const textarea = document.getElementById('noPasteInput');
+  <script>
+    const textarea = document.getElementById('noPasteInput');
 
-  // 禁止貼上、複製、剪下
-  ['paste', 'copy', 'cut'].forEach(eventName => {
-    textarea.addEventListener(eventName, e => e.preventDefault());
-  });
+    // 禁止貼上、複製、剪下
+    ['paste', 'copy', 'cut'].forEach(eventName => {
+      textarea.addEventListener(eventName, e => e.preventDefault());
+    });
 
-  // 禁用所有快捷鍵（F3、F12、Ctrl+V 等）
-  window.addEventListener('keydown', e => {
-    e.preventDefault();
-  }, true);
+    // 禁用所有快捷鍵（例如 Ctrl+V、F3、F12、emoji）
+    window.addEventListener('keydown', e => {
+      e.preventDefault();
+    }, true);
 
-  // 禁用右鍵選單
-  window.addEventListener('contextmenu', e => {
-    e.preventDefault();
-  });
+    // 禁用右鍵選單
+    window.addEventListener('contextmenu', e => {
+      e.preventDefault();
+    });
 
-  // ✅ 不再禁用左鍵（不寫 mousedown 攔截）
-</script>
+    // ✅ 不阻擋左鍵（保留預設點擊行為）
+  </script>
 
 </body>
 </html>
