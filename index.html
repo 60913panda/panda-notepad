@@ -13,27 +13,27 @@
 </head>
 <body>
 
-<h3>請輸入文字（禁止複製貼上）</h3>
-<input type="text" id="noPasteInput" placeholder="只能打字，不能貼上" />
+  <h3>請輸入文字（禁止複製貼上）</h3>
+  <input type="text" id="noPasteInput" placeholder="只能打字，不能貼上" />
 
-<script>
-  const input = document.getElementById('noPasteInput');
+  <script>
+    const input = document.getElementById('noPasteInput');
 
-  input.addEventListener('paste', (e) => {
-    e.preventDefault();
-    alert('貼上功能已被禁用！咕嚕唧～');
-  });
+    input.addEventListener('paste', (e) => {
+      e.preventDefault();
+      alert('貼上功能已被禁用！咕嚕唧～');
+    });
 
-  input.addEventListener('copy', (e) => {
-    e.preventDefault();
-    alert('複製功能已被禁用！咕嚕唧～');
-  });
+    input.addEventListener('copy', (e) => {
+      e.preventDefault();
+      alert('複製功能已被禁用！咕嚕唧～');
+    });
 
-  input.addEventListener('cut', (e) => {
-    e.preventDefault();
-    alert('剪下功能已被禁用！咕嚕唧～');
-  });
-</script>
+    input.addEventListener('cut', (e) => {
+      e.preventDefault();
+      alert('剪下功能已被禁用！咕嚕唧～');
+    });
+  </script>
 
 </body>
 </html>
