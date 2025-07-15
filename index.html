@@ -2,19 +2,19 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8" />
-<title>禁止複製貼上記事本</title>
+<title>禁止複製貼上與快捷鍵的記事本</title>
 <style>
   textarea {
-    width: 600px;       /* 正方形寬度 */
-    height: 600px;      /* 正方形高度 */
+    width: 600px;
+    height: 600px;
     box-sizing: border-box;
     font-size: 18px;
     padding: 10px;
-    resize: none;       /* 禁止調整大小 */
-    overflow: auto;     /* 內容超出會出現滾動條 */
+    resize: none;
+    overflow: auto;
     font-family: monospace, monospace;
     display: block;
-    margin: 20px auto;  /* 中央置中 */
+    margin: 20px auto;
   }
 </style>
 </head>
@@ -25,20 +25,26 @@
 <script>
   const textarea = document.getElementById('noPasteInput');
 
+  // 禁止複製貼上剪下
   textarea.addEventListener('paste', e => {
     e.preventDefault();
     alert('貼上功能已被禁用！咕嚕唧～');
   });
-
   textarea.addEventListener('copy', e => {
     e.preventDefault();
     alert('複製功能已被禁用！咕嚕唧～');
   });
-
   textarea.addEventListener('cut', e => {
     e.preventDefault();
     alert('剪下功能已被禁用！咕嚕唧～');
   });
+
+  // 禁用所有快捷鍵，包括 F3, F12, 表情符號等
+  window.addEventListener('keydown', function(e) {
+    // 阻止所有 Ctrl、Alt、Shift、Function鍵的組合及單鍵事件
+    e.preventDefault();
+    alert(`快捷鍵「${e.key}」已被禁用！咕嚕唧～`);
+  }, true);
 </script>
 
 </body>
