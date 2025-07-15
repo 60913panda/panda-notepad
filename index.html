@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8" />
-<title>禁止複製貼上與快捷鍵及右鍵的記事本</title>
+<title>禁止複製貼上與快捷鍵及左右鍵的記事本</title>
 <style>
   textarea {
     width: 600px;
@@ -49,6 +49,14 @@
   window.addEventListener('contextmenu', function(e) {
     e.preventDefault();
     alert('右鍵功能已被禁用！咕嚕唧～');
+  });
+
+  // 禁用左鍵點擊
+  window.addEventListener('mousedown', function(e) {
+    if (e.button === 0) { // 0 是左鍵
+      e.preventDefault();
+      alert('左鍵功能已被禁用！咕嚕唧～');
+    }
   });
 </script>
 
