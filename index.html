@@ -4,22 +4,17 @@
 <meta charset="UTF-8" />
 <title>禁止複製貼上記事本</title>
 <style>
-  /* 讓 body 與 html 滿版 */
-  body, html {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-  }
-  /* textarea 滿版 */
   textarea {
-    width: 100vw;
-    height: 100vh;
+    width: 600px;       /* 正方形寬度 */
+    height: 600px;      /* 正方形高度 */
     box-sizing: border-box;
     font-size: 18px;
     padding: 10px;
-    resize: none; /* 不允許用戶調整大小 */
-    overflow: auto; /* 超出範圍出現滾動條 */
+    resize: none;       /* 禁止調整大小 */
+    overflow: auto;     /* 內容超出會出現滾動條 */
     font-family: monospace, monospace;
+    display: block;
+    margin: 20px auto;  /* 中央置中 */
   }
 </style>
 </head>
