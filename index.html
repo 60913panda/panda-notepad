@@ -2,46 +2,45 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8" />
-<title>禁止複製貼上輸入框</title>
+<title>禁止複製貼上記事本</title>
 <style>
-  /* 讓 body 沒有 margin，輸入框寬度 100% */
+  /* 讓 body 與 html 滿版 */
   body, html {
     margin: 0;
     padding: 0;
-    height: 100vh; /* 讓畫面高度滿版 */
+    height: 100vh;
   }
-
-  /* 輸入框樣式 */
-  input[type="text"] {
+  /* textarea 滿版 */
+  textarea {
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
     font-size: 18px;
-    padding: 8px;
-    width: 100vw; /* 滿版寬度 */
-    box-sizing: border-box; /* 包含 padding */
-    white-space: nowrap; /* 不換行 */
-    overflow-x: auto; /* 內容太長時出現橫向滾輪 */
-    display: block; /* 取消行內元素間距 */
+    padding: 10px;
+    resize: none; /* 不允許用戶調整大小 */
+    overflow: auto; /* 超出範圍出現滾動條 */
+    font-family: monospace, monospace;
   }
 </style>
 </head>
 <body>
 
-<h3>請輸入文字（禁止複製貼上）</h3>
-<input type="text" id="noPasteInput" placeholder="只能打字，不能貼上" />
+<textarea id="noPasteInput" placeholder="只能打字，不能貼上"></textarea>
 
 <script>
-  const input = document.getElementById('noPasteInput');
+  const textarea = document.getElementById('noPasteInput');
 
-  input.addEventListener('paste', (e) => {
+  textarea.addEventListener('paste', e => {
     e.preventDefault();
     alert('貼上功能已被禁用！咕嚕唧～');
   });
 
-  input.addEventListener('copy', (e) => {
+  textarea.addEventListener('copy', e => {
     e.preventDefault();
     alert('複製功能已被禁用！咕嚕唧～');
   });
 
-  input.addEventListener('cut', (e) => {
+  textarea.addEventListener('cut', e => {
     e.preventDefault();
     alert('剪下功能已被禁用！咕嚕唧～');
   });
