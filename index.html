@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8" />
-<title>禁止複製貼上與快捷鍵的記事本</title>
+<title>禁止複製貼上與快捷鍵及右鍵的記事本</title>
 <style>
   textarea {
     width: 600px;
@@ -41,10 +41,15 @@
 
   // 禁用所有快捷鍵，包括 F3, F12, 表情符號等
   window.addEventListener('keydown', function(e) {
-    // 阻止所有 Ctrl、Alt、Shift、Function鍵的組合及單鍵事件
     e.preventDefault();
     alert(`快捷鍵「${e.key}」已被禁用！咕嚕唧～`);
   }, true);
+
+  // 禁用右鍵選單
+  window.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    alert('右鍵功能已被禁用！咕嚕唧～');
+  });
 </script>
 
 </body>
