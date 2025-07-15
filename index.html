@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8" />
-<title>禁止複製貼上與快捷鍵及左右鍵的記事本</title>
+<title>完全禁止輸入文字的記事本</title>
 <style>
   textarea {
     width: 600px;
@@ -20,42 +20,30 @@
 </head>
 <body>
 
-<textarea id="noPasteInput" placeholder="只能打字，不能貼上"></textarea>
+<textarea id="noInputArea" placeholder="不能輸入任何文字"></textarea>
 
 <script>
-  const textarea = document.getElementById('noPasteInput');
+  const textarea = document.getElementById('noInputArea');
 
-  // 禁止複製貼上剪下
-  textarea.addEventListener('paste', e => {
-    e.preventDefault();
-    alert('貼上功能已被禁用！咕嚕唧～');
-  });
-  textarea.addEventListener('copy', e => {
-    e.preventDefault();
-    alert('複製功能已被禁用！咕嚕唧～');
-  });
-  textarea.addEventListener('cut', e => {
-    e.preventDefault();
-    alert('剪下功能已被禁用！咕嚕唧～');
+  // 一有輸入立刻清空
+  textarea.addEventListener('input', () => {
+    textarea.value = '';
   });
 
-  // 禁用所有快捷鍵，包括 F3, F12, 表情符號等
-  window.addEventListener('keydown', function(e) {
+  // 禁用所有快捷鍵，包括複製貼上剪下
+  window.addEventListener('keydown', e => {
     e.preventDefault();
-    alert(`快捷鍵「${e.key}」已被禁用！咕嚕唧～`);
   }, true);
 
   // 禁用右鍵選單
-  window.addEventListener('contextmenu', function(e) {
+  window.addEventListener('contextmenu', e => {
     e.preventDefault();
-    alert('右鍵功能已被禁用！咕嚕唧～');
   });
 
-  // 禁用左鍵點擊
-  window.addEventListener('mousedown', function(e) {
-    if (e.button === 0) { // 0 是左鍵
+  // 禁用滑鼠左右鍵點擊
+  window.addEventListener('mousedown', e => {
+    if (e.button === 0 || e.button === 2) { 
       e.preventDefault();
-      alert('左鍵功能已被禁用！咕嚕唧～');
     }
   });
 </script>
