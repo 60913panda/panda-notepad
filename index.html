@@ -1,46 +1,34 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <title>胖達記事本</title>
-
-  <!-- 正確的 favicon 設定（使用 icon.png） -->
-  <link rel="icon" href="icon.png" type="image/png" />
-
-  <style>
-    textarea {
-      width: 600px;
-      height: 600px;
-      box-sizing: border-box;
-      font-size: 18px;
-      padding: 10px;
-      resize: none;
-      overflow: auto;
-      font-family: monospace, monospace;
-      display: block;
-      margin: 20px auto;
-    }
-  </style>
+<meta charset="UTF-8" />
+<title>胖達記事本</title>
+<style>
+  html, body {
+    margin: 0; padding: 0; height: 100%; background: #fff;
+  }
+  textarea {
+    width: 90vmin; height: 90vmin; font-size: 18px; padding: 10px;
+    resize: none; overflow: auto; font-family: monospace;
+    display: block; margin: 5vmin auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border: 1px solid #ccc;
+  }
+</style>
 </head>
 <body>
-
-<textarea id="noPasteInput" placeholder="請輸入文字"></textarea>
+𓂀𒈙𒀭𒋾𓁹⩰⩳𓇌𒐪𐑚𐑓𐑧𐑥𖤐𖤒𖤔𖤘𖤙𖤚𖤛
 
 <script>
-  const textarea = document.getElementById('noPasteInput');
+// base64 編碼的 JS
+const encodedCode = "KGZ1bmN0aW9uKCl7CiAgaWYgKGxvY2F0aW9uLmhvc3RuYW1lICE9PSAnNjA5MTNwYW5kYS5naXRodWIuaW8nKSB7CiAgICBkb2N1bWVudC5ib2R5LmlubmVySFRNTCA9ICfkuK3lsYLmnIPlpKflkI3luILnmoTlip7op4TntKLmlK/mnInjgIHjgIInOwogICAgdGhyb3cgbmV3IEVycm9yKCJVbmF1dGhvcml6ZWQgc291cmNlIik7CiAgfQoKICBzZXRUaW1lb3V0KGZ1bmN0aW9uKCkgewogICAgZG9jdW1lbnQuYm9keS5pbm5lckhUTUwgPSAnPHRleHRhcmVhIGlkPSJwYWQiIHBsYWNlaG9sZGVyPSLkuK3lsYLmnIPlpKflkI3luILnmoQ8L3RleHRhcmVhPic7CiAgICBjb25zdCBwYWQgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgncGFkJyk7CgogICAgWydjb250ZXh0bWVudScsICdwYXN0ZScsICdjb3B5JywgJ2N1dCddLmZvckVhY2goZXZlbnQgPT4KICAgICAgcGFkLmFkZEV2ZW50TGlzdGVuZXIoZXZlbnQsIGUgPT4gZS5wcmV2ZW50RGVmYXVsdCgpKQogICAgKTsKCiAgICB3aW5kb3cuYWRkRXZlbnRMaXN0ZW5lcigna2V5ZG93bicsIGUgPT4gewogICAgICBpZiAoCiAgICAgICAgZS5rZXkgPT09ICdGMTInIHx8CiAgICAgICAgKGUuY3RybEtleSAmJiBbJ3UnLCAncydsICdwJ10uaW5jbHVkZXMoZS5rZXkudG9Mb3dlckNhc2UoKSkpIHx8CiAgICAgICAgKGUuY3RybEtleSAmJiBlLnNoaWZ0S2V5ICYmIFsnaScsICdqJywgJ2MnXS5pbmNsdWRlcyhlLmtleS50b0xvd2VyQ2FzZSgpKSkKICAgICAgKSB7CiAgICAgICAgZS5wcmV2ZW50RGVmYXVsdCgpOwogICAgICB9CiAgICB9LCB0cnVlKTsKICB9LCAxMDApOwp9KSgpOw==";
 
-  ['paste', 'copy', 'cut'].forEach(eventName => {
-    textarea.addEventListener(eventName, e => e.preventDefault());
-  });
-
-  window.addEventListener('keydown', e => {
-    e.preventDefault();
-  }, true);
-
-  window.addEventListener('contextmenu', e => {
-    e.preventDefault();
-  });
+(function(){
+  const code = atob(encodedCode);
+  const script = document.createElement('script');
+  script.textContent = code;
+  document.body.appendChild(script);
+})();
 </script>
-
 </body>
 </html>
