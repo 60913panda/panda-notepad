@@ -2,15 +2,15 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <title>666胖達記事本</title>
+  <title>胖達記事本</title>
 
-  <!-- 頁面圖示 -->
+  <!-- 正確的 favicon 設定（使用 icon.png） -->
   <link rel="icon" href="icon.png" type="image/png" />
 
   <style>
     textarea {
-      width: 1000000px;
-      height: 1000000px;
+      width: 600px;
+      height: 600px;
       box-sizing: border-box;
       font-size: 18px;
       padding: 10px;
@@ -24,7 +24,23 @@
 </head>
 <body>
 
-  <textarea placeholder="請輸入文字"></textarea>
+<textarea id="noPasteInput" placeholder="請輸入文字"></textarea>
+
+<script>
+  const textarea = document.getElementById('noPasteInput');
+
+  ['paste', 'copy', 'cut'].forEach(eventName => {
+    textarea.addEventListener(eventName, e => e.preventDefault());
+  });
+
+  window.addEventListener('keydown', e => {
+    e.preventDefault();
+  }, true);
+
+  window.addEventListener('contextmenu', e => {
+    e.preventDefault();
+  });
+</script>
 
 </body>
 </html>
